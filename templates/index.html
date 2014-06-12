@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css" />
-    <title>Russian Roulette</title>
+    <title>PttDaily Generator</title>
     <script language="javascript">
         function setCookie(c_name, value) { 
             expiredays = 100;
@@ -28,42 +28,57 @@
             }
             return unescape(document.cookie.substring(c_start,c_end))
         }
-
-        function checkCookie() {
-            items = getCookie('items')
-            if (items == null) {
-                items = "親來食堂\n有錢真好\n馬玲薯咖哩";
-                setCookie('items', items);
-            }
-            document.getElementById("items").value = items;
-        }
-
-
-        function randomInt(n) {
-            return Math.floor(Math.random() * n);
-        }
-        function isEmptyString(element, index, array) {
-            return (element.replace(/\ /g, '').length > 0);
-        }
-        function show() {
-            var items = document.getElementById("items").value.split("\n").filter(isEmptyString);
-            var button = document.getElementById("showbutton");
-            if (items.length == 0) {
-                alert("Please enter something");
-            } else {
-                alert(items[randomInt(items.length)]);
-                setCookie('items', items.join("\n"));
-            }
-        }
     </script>
 </head>
 
-<body onLoad="checkCookie()">
-    <center>
-        <form class="pure-form pure-form-stacked">
-            <textarea id="items" rows="12" cols="50"></textarea>
-            <button class="pure-button pure-button-primary" id="showbutton" type="button" onClick="show()">Show</button>
+<body>
+    <div class="header">
+      <center>
+          <h1>鄉民日報產生器</h1>
+          <hr>
+      </center>
+    </div>
+    <div class="content">
+<div class="pure-g">
+    <div class="pure-u-1-2">
+        <center>
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="author">作者</label>
+                    <input id="author" type="text" placeholder="meowmeowgo">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="date">日期</label>
+                    <input id="date" type="text" placeholder="2014.05.30">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="number">編號</label>
+                    <input id="number" type="number" placeholder="1">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="headline">頭條</label>
+                    <textarea id="headline" rows="7" cols="66"></textarea>
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="content">內文</label>
+                    <textarea id="content" rows="30" cols="66"></textarea>
+                </div>
+
+                <button type="submit" class="pure-button pure-button-primary">轉換</button>
+            </fieldset>
         </form>
-    </center>
+        </center>
+    </div>
+    <div class="pure-u-1-2">
+        <form class="pure-form pure-form-stacked">
+            <label for="result">結果</label>
+            <textarea id="result" rows="40" cols="66"></textarea>
+        </form>
+    </div>
 </body>
 </html>
