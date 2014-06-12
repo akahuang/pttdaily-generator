@@ -32,53 +32,49 @@
 </head>
 
 <body>
-    <div class="header">
       <center>
           <h1>鄉民日報產生器</h1>
           <hr>
       </center>
-    </div>
-    <div class="content">
+
 <div class="pure-g">
     <div class="pure-u-1-2">
         <center>
-        <form class="pure-form pure-form-aligned">
-            <fieldset>
-                <div class="pure-control-group">
-                    <label for="author">作者</label>
-                    <input id="author" type="text" placeholder="meowmeowgo">
-                </div>
+        <form class="pure-form pure-form-aligned" action="/result/" method="POST">
+            <div class="pure-control-group">
+                <label for="author">作者</label>
+                <input id="author" name="author" type="text" placeholder="meowmeowgo" value="{{ request['author'] }}">
+            <div class="pure-control-group">
 
-                <div class="pure-control-group">
-                    <label for="date">日期</label>
-                    <input id="date" type="text" placeholder="2014.05.30">
-                </div>
+            <div class="pure-control-group">
+                <label for="date">日期</label>
+                <input id="date" name="date" type="text" placeholder="2014.05.30" value="{{ request['date'] }}">
+            <div class="pure-control-group">
 
-                <div class="pure-control-group">
-                    <label for="number">編號</label>
-                    <input id="number" type="number" placeholder="1">
-                </div>
+            <div class="pure-control-group">
+                <label for="number">編號</label>
+                <input id="number" name="number" type="number" placeholder="1" value="{{ request['number'] }}">
+            <div class="pure-control-group">
 
-                <div class="pure-control-group">
-                    <label for="headline">頭條</label>
-                    <textarea id="headline" rows="7" cols="66"></textarea>
-                </div>
+            <div class="pure-control-group">
+                <label for="headline">頭條</label>
+                <textarea id="headline" name="headline" rows="8" cols="70" >{{ request['headline'] }}</textarea>
+            <div class="pure-control-group">
 
-                <div class="pure-control-group">
-                    <label for="content">內文</label>
-                    <textarea id="content" rows="30" cols="66"></textarea>
-                </div>
+            <div class="pure-control-group">
+                <label for="content">內文</label>
+                <textarea id="content" name="content" rows="30" cols="70">{{ request['content'] }}</textarea>
+            </div>
 
-                <button type="submit" class="pure-button pure-button-primary">轉換</button>
-            </fieldset>
+            <input type="submit" class="pure-button pure-button-primary" value="轉換">
         </form>
         </center>
     </div>
+
     <div class="pure-u-1-2">
         <form class="pure-form pure-form-stacked">
             <label for="result">結果</label>
-            <textarea id="result" rows="40" cols="66"></textarea>
+            <textarea id="result" rows="40" cols="70">{{ result }}</textarea>
         </form>
-    </div>
 </body>
 </html>
