@@ -20,21 +20,20 @@
     <center>
         <form class="pure-form pure-form-aligned" action="/style/" method="POST">
             <div class="pure-control-group">
-                <label for="headline">大標題</label>
-                <textarea id="headline" name="headline" rows="8">{{ style.h1_template }}</textarea>
+                <label for="h1_template">大標題</label>
+                <textarea id="h1_template" name="h1_template" rows="8">{{ style['h1_template'] }}</textarea>
             </div>
 
             <div class="pure-control-group">
-                <label for="headline">小標題</label>
-                <textarea id="headline" name="headline" rows="8">{{ style.h2_template }}</textarea>
+                <label for="h2_template">小標題</label>
+                <textarea id="h2_template" name="h2_template" rows="8">{{ style['h2_template'] }}</textarea>
             </div>
 
             <div class="pure-control-group">
-                <label for="content">結尾</label>
-                <textarea id="content" name="content" rows="10">{{ style.footer }}</textarea>
+                <label for="footer">結尾</label>
+                <textarea id="footer" name="footer" rows="10">{{ style['footer'] }}</textarea>
             </div>
 
-            <input type="hidden" name="action" value="convert">
             <input type="submit" class="pure-button pure-button-primary" value="儲存">
         </form>
       </center>

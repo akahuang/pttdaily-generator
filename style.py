@@ -9,7 +9,8 @@ class Style:
     DEFAULT_STR = '標題'
     DEFAULT_H1 = '\025[46m  \025[47m \025[30m{0}  \025[m\n'.format(DEFAULT_STR)
     DEFAULT_H2 = '\025[1;36m◎{0}\025[m\n'.format(DEFAULT_STR)
-    DEFAULT_FOOTER = '''\025[m
+    DEFAULT_FOOTER = '''
+\025[m
   \025[47m                \025[46m                                                  \025[m
   \025[30;47m  【鄉民日報】  \025[1;37;46m   做個活活潑潑的好鄉民，當個堂堂正正的台灣人。   \025[m
   \025[47m                \025[46m                                                  \025[m
@@ -22,20 +23,22 @@ class Style:
         self.footer = footer
 
     def h1(self, s):
-        return self.render(self.h1_template, s)
+        return self.render(self.h1_template, s.strip())
 
     def h2(self, s):
-        return self.render(self.h2_template, s)
+        return self.render(self.h2_template, s.strip())
 
     def render(self, template, in_string):
         """Generator a converting function."""
         return template.replace(self.DEFAULT_STR, in_string)
 
-    def toUnicode(self):
-        """Black Magic!!! Convert the template string to unicode."""
-        self.h1_template = self.h1_template.decode('utf-8')
-        self.h2_template = self.h2_template.decode('utf-8')
-        self.footer      = self.footer.decode('utf-8')
+    def unicode_dict(self):
+        """Convert the template string to unicode."""
+        return {
+            'h1_template' : self.h1_template.decode('utf-8'),
+            'h2_template' : self.h2_template.decode('utf-8'),
+            'footer'      : self.footer.decode('utf-8'),
+        }
 
 
 def fill_string(string, length):
