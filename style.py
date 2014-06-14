@@ -2,19 +2,51 @@
 # -*- coding: utf-8 -*-
 """Implement the style function."""
 
-def h1(string):
-    string = string.strip()
-    return '\025[46m  \025[47m \025[30m{0}  \025[m\n'.format(string)
+class Style:
+    """Implement the template style.
+    Users can design their own style with some strings to be replaced."""
 
-def h2(string):
-    string = string.strip()
-    return '\025[1;36m◎{0}\025[m\n'.format(string)
+    DEFAULT_STR = '標題'
+    DEFAULT_H1 = '\025[46m  \025[47m \025[30m{0}  \025[m\n'.format(DEFAULT_STR)
+    DEFAULT_H2 = '\025[1;36m◎{0}\025[m\n'.format(DEFAULT_STR)
+    DEFAULT_FOOTER = '''
+\025[m
+  \025[47m                \025[46m                                                  \025[m
+  \025[30;47m  【鄉民日報】  \025[1;37;46m   做個活活潑潑的好鄉民，當個堂堂正正的台灣人。   \025[m
+  \025[47m                \025[46m                                                  \025[m
+\025[m
+'''
+
+    def __init__(self, h1=DEFAULT_H1, h2=DEFAULT_H2, footer=DEFAULT_FOOTER):
+        self.h1_template = h1
+        self.h2_template = h2
+        self.footer = footer
+
+    def h1(self, s):
+        return self.render(self.h1_template, s.strip())
+
+    def h2(self, s):
+        return self.render(self.h2_template, s.strip())
+
+    def render(self, template, in_string):
+        """Generator a converting function."""
+        return template.replace(self.DEFAULT_STR, in_string)
+
+    def unicode_dict(self):
+        """Convert the template string to unicode."""
+        return {
+            'h1_template' : self.h1_template.decode('utf-8'),
+            'h2_template' : self.h2_template.decode('utf-8'),
+            'footer'      : self.footer.decode('utf-8'),
+        }
+
 
 def fill_string(string, length):
     """Fill space until the length.
     Ex: fill_string('abc', 5)  => 'abc  '
-        fill_string('你好', 5) => '你好 ' 
+        fill_string('你好', 5) => '你好 '
         fill_string('啦啦啦超過啦', 4) => '啦啦'
+        fill_string('啦啦啦不用補空白', -1) => '啦啦啦不用補空白'
     """
     string = string.strip()
     current_length = len(string.decode('utf-8').encode('big5'))
@@ -52,13 +84,3 @@ def header(author, number, date, headline):
 '''
     return ret
 
-def footer():
-    """Ptt Daily 頁尾"""
-    ret = '''
-\025[m
-  \025[47m                \025[46m                                                  \025[m
-  \025[30;47m  【鄉民日報】  \025[1;37;46m   做個活活潑潑的好鄉民，當個堂堂正正的台灣人。   \025[m
-  \025[47m                \025[46m                                                  \025[m
-\025[m
-'''
-    return ret
