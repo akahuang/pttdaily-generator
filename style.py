@@ -7,14 +7,29 @@ class Style:
     Users can design their own style with some strings to be replaced."""
 
     DEFAULT_STR = '標題'
-    DEFAULT_H1 = '\025[46m  \025[47m \025[30m{0}  \025[m\n'.format(DEFAULT_STR)
-    DEFAULT_H2 = '\025[1;36m◎{0}\025[m\n'.format(DEFAULT_STR)
+    DEFAULT_H1 = '【*[1;33m標題*[m】\n'.format(DEFAULT_STR)
+    DEFAULT_H2 = '*[1;36m◎{0}*[m\n'.format(DEFAULT_STR)
     DEFAULT_FOOTER = '''
-\025[m
-  \025[47m                \025[46m                                                  \025[m
-  \025[30;47m  【鄉民日報】  \025[1;37;46m   做個活活潑潑的好鄉民，當個堂堂正正的台灣人。   \025[m
-  \025[47m                \025[46m                                                  \025[m
-\025[m
+*[m
+  *[47m                *[46m                                                  *[m
+  *[30;47m  【鄉民日報】  *[1;37;46m   做個活活潑潑的好鄉民，當個堂堂正正的台灣人。   *[m
+  *[47m                *[46m                                                  *[m
+*[m
+
+
+
+
+
+鍵在手，跟我走~滅壟斷，奪主流!
+
+
+                          鍵在手，跟我走~滅壟斷，奪主流!
+
+
+                                              鍵在手，跟我走~滅壟斷，奪主流
+
+                                                            http://ppt.cc/e9Bg
+
 '''
 
     def __init__(self, h1=DEFAULT_H1, h2=DEFAULT_H2, footer=DEFAULT_FOOTER):
@@ -61,25 +76,25 @@ def header(author, number, date, headline):
     headlines = headline.split('\n')
 
     ret = '''
-\025[m
-\025[0;1;30m  ██￣╲ ￣██￣ ￣██￣   ██￣╲          ￣￣ ██\025[m
-\025[0;1;30m  ██  ▕   ██     ██     ██  ▕ ╱￣█◣ ██ ██ ▏  ██\025[m
-\025[0;1m  ██ˍ╱   ██     ██     ██  ▕ ╱￣██ ██ ██ ▏  ██\025[m
-\025[0;1m  ██       ██     ██     ██ˍ╱ ╲ˍ██ ██ ██ ╲ˍ██ #{2}\025[m
-                                                           \025[0;1m╲ˍ█◤           \025[0m　\025[m
-  \025[m{0}ψ{1}\025[m
-\025[m
-  \025[41m                                                                \025[m
+*[m
+*[0;1;30m  ██￣╲ ￣██￣ ￣██￣   ██￣╲          ￣￣ ██*[m
+*[0;1;30m  ██  ▕   ██     ██     ██  ▕ ╱￣█◣ ██ ██ ▏  ██*[m
+*[0;1m  ██ˍ╱   ██     ██     ██  ▕ ╱￣██ ██ ██ ▏  ██*[m
+*[0;1m  ██       ██     ██     ██ˍ╱ ╲ˍ██ ██ ██ ╲ˍ██ #{2}*[m
+                                                           *[0;1m╲ˍ█◤           *[0m　*[m
+  *[m{0}ψ{1}*[m
+*[m
+  *[41m                                                                *[m
 '''.format(date, author, number)
-    ret += '  \025[1;41m  ◆ {0}\025[m\n'.format(fill_string(headlines[0], COUNT))
-    ret += '''  \025[41m                                                                \025[m
-  \025[0;31m┌───────────────────────────────┐\025[m
-  \025[0;31m│                                                              │\025[m
+    ret += '  *[1;41m  ◆ {0}*[m\n'.format(fill_string(headlines[0], COUNT))
+    ret += '''  *[41m                                                                *[m
+  *[0;31m┌───────────────────────────────┐*[m
+  *[0;31m│                                                              │*[m
 '''
     for line in headlines[1:]:
-        ret += '  \025[0;31m│ \025[0m{0} \025[0;31m │\025[m\n'.format(fill_string(line, COUNT))
-    ret += '''  \025[0;31m│                                                              │\025[m
-  \025[0;31m└───────────────────────────────┘\025[m
+        ret += '  *[0;31m│ *[0m{0} *[0;31m │*[m\n'.format(fill_string(line, COUNT))
+    ret += '''  *[0;31m│                                                              │*[m
+  *[0;31m└───────────────────────────────┘*[m
 
 '''
     return ret

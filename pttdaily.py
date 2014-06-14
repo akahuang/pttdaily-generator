@@ -23,5 +23,5 @@ def generate_result(form, user_style=None):
         ret += line
     ret += user_style.footer
 
-    return ret
+    return ret.replace('*[', '\025[')
 
