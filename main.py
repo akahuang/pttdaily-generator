@@ -8,12 +8,10 @@ from pttdaily import generate_result
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def main():
-    return render_template('index.html', request=defaultdict(str), result='')
-
-@app.route('/result/', methods=['POST', 'GET'])
-def result():
+    if request.form.get('action') is None:
+        return render_template('index.html', request=defaultdict(str), result='')
     try:
         form = {
             'author'   : request.form.get('author', '').encode('utf-8'),
