@@ -17,22 +17,26 @@ class Style:
 '''
 
     def __init__(self, h1=DEFAULT_H1, h2=DEFAULT_H2, footer=DEFAULT_FOOTER):
-        self.h1 = self.generate_converter(h1)
-        self.h2 = self.generate_converter(h2)
+        self.h1_template = h1
+        self.h2_template = h2
         self.footer = footer
 
-    def generate_converter(self, string):
+    def h1(self, s):
+        return self.render(self.h1_template, s)
+
+    def h2(self, s):
+        return self.render(self.h2_template, s)
+
+    def render(self, template, in_string):
         """Generator a converting function."""
-        return lambda s: string.replace(self.DEFAULT_STR, s)
+        return template.replace(self.DEFAULT_STR, in_string)
 
+    def toUnicode(self):
+        """Black Magic!!! Convert the template string to unicode."""
+        self.h1_template = self.h1_template.decode('utf-8')
+        self.h2_template = self.h2_template.decode('utf-8')
+        self.footer      = self.footer.decode('utf-8')
 
-def h1(string):
-    string = string.strip()
-    return '\025[46m  \025[47m \025[30m{0}  \025[m\n'.format(string)
-
-def h2(string):
-    string = string.strip()
-    return '\025[1;36m◎{0}\025[m\n'.format(string)
 
 def fill_string(string, length):
     """Fill space until the length.
@@ -77,13 +81,3 @@ def header(author, number, date, headline):
 '''
     return ret
 
-def footer():
-    """Ptt Daily 頁尾"""
-    ret = '''
-\025[m
-  \025[47m                \025[46m                                                  \025[m
-  \025[30;47m  【鄉民日報】  \025[1;37;46m   做個活活潑潑的好鄉民，當個堂堂正正的台灣人。   \025[m
-  \025[47m                \025[46m                                                  \025[m
-\025[m
-'''
-    return ret

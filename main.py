@@ -5,6 +5,7 @@ import traceback
 from collections import defaultdict
 from flask import Flask, request, render_template
 from pttdaily import generate_result
+from style import Style
 
 app = Flask(__name__)
 
@@ -26,4 +27,11 @@ def main():
     except:
         return traceback.format_exc()
 
-
+@app.route('/style/', methods=['GET', 'POST'])
+def style_template():
+    style = Style()
+    style.toUnicode()
+    try:
+        return render_template('style.html', style=style)
+    except:
+        return traceback.format_exc()
