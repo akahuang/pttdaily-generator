@@ -310,3 +310,17 @@ mark {
         page-break-before: always;
     }
 }
+
+/* My setting */
+  .banner {
+      left: 0em;
+      width: 100%;
+      background-color: #eee;
+      padding: 1em 0em 1em 0em;
+      outline: #ddd solid thin;
+  }
+  #footer {
+      color: #888;
+      font-size: 0.9em;
+      margin-top: 1em;
+  }

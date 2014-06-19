@@ -1,3 +1,4 @@
+{% import 'macros.html' as macros %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,5 +11,6 @@
 
 <body>
     {% block body %}{% endblock %}
+    {{ macros.footer() }}
 </body>
 </html>

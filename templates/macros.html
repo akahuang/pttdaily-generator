@@ -1,5 +1,5 @@
 {% macro header(page) -%}
-    <div class="pure-menu pure-menu-open pure-menu-horizontal">
+    <div class="pure-menu pure-menu-open pure-menu-horizontal" style="background-color: #eee; outline: #ddd solid thin; margin-bottom: 1em;">
         <a class="pure-menu-heading"><h1>鄉民日報產生器</h1></a>
         <ul>
             <li {% if page == 'home' %}class="pure-menu-selected"{% endif %}><a href="/">首頁</a></li>
@@ -7,5 +7,14 @@
             <li {% if page == 'help' %}class="pure-menu-selected"{% endif %}><a href="/help/">使用說明</a></li>
         </ul>
     </div>
-    <hr>
+{%- endmacro %}
+
+{% macro footer() -%}
+    <div class="banner" id="footer">
+        <center>
+        &copy; Copyright 2014 by flarehunter. Powered by <a href="http://flask.pocoo.org/" target="_blank">Flask</a>.<br>
+        <a href="https://github.com/akahuang/pttdaily-generator" target="_blank">程式碼</a> 和 
+        <a href="https://www.facebook.com/pages/%E9%84%89%E6%B0%91%E6%97%A5%E5%A0%B1-PTT-Daily/327302430753422" target="_blank">鄉民日報FB粉絲頁</a>.
+        </center>
+    </div>
 {%- endmacro %}
