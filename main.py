@@ -47,6 +47,10 @@ def style_template():
     except:
         return traceback.format_exc()
 
+@app.route('/help/', methods=['GET'])
+def help_page():
+    return render_template('help.html')
+
 def get_style():
     style = Style()
     style.h1_template = update_from_cookie_and_post(style.h1_template, 'h1_template')

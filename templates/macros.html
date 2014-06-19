@@ -1,0 +1,11 @@
+{% macro header(page) -%}
+    <div class="pure-menu pure-menu-open pure-menu-horizontal">
+        <a class="pure-menu-heading"><h1>鄉民日報產生器</h1></a>
+        <ul>
+            <li {% if page == 'home' %}class="pure-menu-selected"{% endif %}><a href="/">首頁</a></li>
+            <li {% if page == 'style' %}class="pure-menu-selected"{% endif %}><a href="/style/">調整樣式</a></li>
+            <li {% if page == 'help' %}class="pure-menu-selected"{% endif %}><a href="/help/">使用說明</a></li>
+        </ul>
+    </div>
+    <hr>
+{%- endmacro %}
