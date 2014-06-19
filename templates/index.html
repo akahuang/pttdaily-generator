@@ -28,7 +28,7 @@
 
                 <div class="pure-control-group">
                     <label for="content">內文</label>
-                    <textarea id="content" name="content" rows="30">{{ request['content'] }}</textarea>
+                    <textarea id="content" name="content" rows="22">{{ request['content'] }}</textarea>
                 </div>
 
                 <input type="hidden" name="action" value="convert">
@@ -38,10 +38,7 @@
         </div>
 
         <div class="pure-u-1-2">
-            <form class="pure-form pure-form-stacked">
-                <label for="result">結果</label>
-                <textarea id="result" rows="40" onfocus="this.select()" onmouseover="this.focus()">{{ result }}</textarea>
-            </form>
+            <textarea id="result" rows="40" onfocus="this.select()" onmouseover="this.focus()">{{ result }}</textarea>
         </div> 
     </div>
 {% endblock %}
